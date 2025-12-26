@@ -1,4 +1,5 @@
 RECIPE: Bun Bo Hue (Spicy Beef Noodle Soup)
+IMAGE: bun-bo-hue.jpg
 REGION: Central
 TIME: 240
 SERVINGS: 6

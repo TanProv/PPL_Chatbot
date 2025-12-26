@@ -1,4 +1,5 @@
 RECIPE: Banh Xeo (Crispy Vietnamese Crepes)
+IMAGE: banh-xeo.jpg
 REGION: Southern
 TIME: 40
 SERVINGS: 4

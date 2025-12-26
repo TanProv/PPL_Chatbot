@@ -1,4 +1,5 @@
 RECIPE: Canh Chua (Sour Soup)
+IMAGE: canh-chua.jpg
 REGION: Southern
 TIME: 30
 SERVINGS: 4

@@ -1,4 +1,5 @@
 RECIPE: Com Tam (Broken Rice with Grilled Pork)
+IMAGE: com-tam.jpg
 REGION: Southern
 TIME: 60
 SERVINGS: 4

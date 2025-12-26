@@ -6,51 +6,61 @@ import sys
 if sys.version_info[1] > 5:
 	from typing import TextIO
 else:
-	from typing import BinaryIO as TextIO
+	from typing.io import TextIO
 
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\30")
-        buf.write("\u0084\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\31")
+        buf.write("\u0096\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
-        buf.write("\t\16\4\17\t\17\3\2\3\2\7\2!\n\2\f\2\16\2$\13\2\7\2&\n")
-        buf.write("\2\f\2\16\2)\13\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3")
-        buf.write("\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3")
-        buf.write("\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3")
-        buf.write("\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\5\3\5\3\6\3\6\3")
-        buf.write("\7\3\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\f\6\fg\n\f")
-        buf.write("\r\f\16\fh\3\r\3\r\7\rm\n\r\f\r\16\rp\13\r\3\r\3\r\3\r")
-        buf.write("\3\16\6\16v\n\16\r\16\16\16w\3\17\3\17\7\17|\n\17\f\17")
-        buf.write("\16\17\177\13\17\3\17\3\17\3\17\3\17\2\2\20\2\4\6\b\n")
-        buf.write("\f\16\20\22\24\26\30\32\34\2\4\3\2\r\17\3\2\20\22\2{\2")
-        buf.write("\'\3\2\2\2\4,\3\2\2\2\6U\3\2\2\2\bW\3\2\2\2\nY\3\2\2\2")
-        buf.write("\f[\3\2\2\2\16]\3\2\2\2\20_\3\2\2\2\22a\3\2\2\2\24c\3")
-        buf.write("\2\2\2\26f\3\2\2\2\30j\3\2\2\2\32u\3\2\2\2\34y\3\2\2\2")
-        buf.write("\36\"\5\4\3\2\37!\7\25\2\2 \37\3\2\2\2!$\3\2\2\2\" \3")
-        buf.write("\2\2\2\"#\3\2\2\2#&\3\2\2\2$\"\3\2\2\2%\36\3\2\2\2&)\3")
-        buf.write("\2\2\2\'%\3\2\2\2\'(\3\2\2\2(*\3\2\2\2)\'\3\2\2\2*+\7")
-        buf.write("\2\2\3+\3\3\2\2\2,-\7\3\2\2-.\7\24\2\2./\5\6\4\2/\60\7")
-        buf.write("\25\2\2\60\61\7\4\2\2\61\62\7\24\2\2\62\63\5\b\5\2\63")
-        buf.write("\64\7\25\2\2\64\65\7\5\2\2\65\66\7\24\2\2\66\67\5\n\6")
-        buf.write("\2\678\7\25\2\289\7\6\2\29:\7\24\2\2:;\5\f\7\2;<\7\25")
-        buf.write("\2\2<=\7\7\2\2=>\7\24\2\2>?\5\16\b\2?@\7\25\2\2@A\7\b")
-        buf.write("\2\2AB\7\24\2\2BC\5\20\t\2CD\7\25\2\2DE\7\t\2\2EF\7\24")
-        buf.write("\2\2FG\5\22\n\2GH\7\25\2\2HI\7\n\2\2IJ\7\24\2\2JK\5\24")
-        buf.write("\13\2KL\7\25\2\2LM\7\13\2\2MN\7\24\2\2NO\7\25\2\2OP\5")
-        buf.write("\26\f\2PQ\7\f\2\2QR\7\24\2\2RS\7\25\2\2ST\5\32\16\2T\5")
-        buf.write("\3\2\2\2UV\7\30\2\2V\7\3\2\2\2WX\t\2\2\2X\t\3\2\2\2YZ")
-        buf.write("\7\26\2\2Z\13\3\2\2\2[\\\7\26\2\2\\\r\3\2\2\2]^\7\26\2")
-        buf.write("\2^\17\3\2\2\2_`\t\3\2\2`\21\3\2\2\2ab\7\30\2\2b\23\3")
-        buf.write("\2\2\2cd\7\30\2\2d\25\3\2\2\2eg\5\30\r\2fe\3\2\2\2gh\3")
-        buf.write("\2\2\2hf\3\2\2\2hi\3\2\2\2i\27\3\2\2\2jn\7\23\2\2km\7")
-        buf.write("\27\2\2lk\3\2\2\2mp\3\2\2\2nl\3\2\2\2no\3\2\2\2oq\3\2")
-        buf.write("\2\2pn\3\2\2\2qr\7\30\2\2rs\7\25\2\2s\31\3\2\2\2tv\5\34")
-        buf.write("\17\2ut\3\2\2\2vw\3\2\2\2wu\3\2\2\2wx\3\2\2\2x\33\3\2")
-        buf.write("\2\2y}\7\23\2\2z|\7\27\2\2{z\3\2\2\2|\177\3\2\2\2}{\3")
-        buf.write("\2\2\2}~\3\2\2\2~\u0080\3\2\2\2\177}\3\2\2\2\u0080\u0081")
-        buf.write("\7\30\2\2\u0081\u0082\7\25\2\2\u0082\35\3\2\2\2\b\"\'")
-        buf.write("hnw}")
+        buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\3\2\3\2\7\2%\n\2\f")
+        buf.write("\2\16\2(\13\2\7\2*\n\2\f\2\16\2-\13\2\3\2\3\2\3\3\6\3")
+        buf.write("\62\n\3\r\3\16\3\63\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3")
+        buf.write("\4\5\4?\n\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3")
+        buf.write("\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4")
+        buf.write("\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3")
+        buf.write("\5\3\5\3\6\3\6\3\7\3\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3")
+        buf.write("\13\3\f\3\f\3\r\3\r\3\16\6\16y\n\16\r\16\16\16z\3\17\3")
+        buf.write("\17\7\17\177\n\17\f\17\16\17\u0082\13\17\3\17\3\17\3\17")
+        buf.write("\3\20\6\20\u0088\n\20\r\20\16\20\u0089\3\21\3\21\7\21")
+        buf.write("\u008e\n\21\f\21\16\21\u0091\13\21\3\21\3\21\3\21\3\21")
+        buf.write("\2\2\22\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \2\5\5")
+        buf.write("\2\24\24\27\27\31\31\3\2\16\20\3\2\21\23\2\u008d\2+\3")
+        buf.write("\2\2\2\4\61\3\2\2\2\6\65\3\2\2\2\be\3\2\2\2\ng\3\2\2\2")
+        buf.write("\fi\3\2\2\2\16k\3\2\2\2\20m\3\2\2\2\22o\3\2\2\2\24q\3")
+        buf.write("\2\2\2\26s\3\2\2\2\30u\3\2\2\2\32x\3\2\2\2\34|\3\2\2\2")
+        buf.write("\36\u0087\3\2\2\2 \u008b\3\2\2\2\"&\5\6\4\2#%\7\26\2\2")
+        buf.write("$#\3\2\2\2%(\3\2\2\2&$\3\2\2\2&\'\3\2\2\2\'*\3\2\2\2(")
+        buf.write("&\3\2\2\2)\"\3\2\2\2*-\3\2\2\2+)\3\2\2\2+,\3\2\2\2,.\3")
+        buf.write("\2\2\2-+\3\2\2\2./\7\2\2\3/\3\3\2\2\2\60\62\t\2\2\2\61")
+        buf.write("\60\3\2\2\2\62\63\3\2\2\2\63\61\3\2\2\2\63\64\3\2\2\2")
+        buf.write("\64\5\3\2\2\2\65\66\7\3\2\2\66\67\7\25\2\2\678\5\b\5\2")
+        buf.write("8>\7\26\2\29:\7\4\2\2:;\7\25\2\2;<\5\n\6\2<=\7\26\2\2")
+        buf.write("=?\3\2\2\2>9\3\2\2\2>?\3\2\2\2?@\3\2\2\2@A\7\5\2\2AB\7")
+        buf.write("\25\2\2BC\5\f\7\2CD\7\26\2\2DE\7\6\2\2EF\7\25\2\2FG\5")
+        buf.write("\16\b\2GH\7\26\2\2HI\7\7\2\2IJ\7\25\2\2JK\5\20\t\2KL\7")
+        buf.write("\26\2\2LM\7\b\2\2MN\7\25\2\2NO\5\22\n\2OP\7\26\2\2PQ\7")
+        buf.write("\t\2\2QR\7\25\2\2RS\5\24\13\2ST\7\26\2\2TU\7\n\2\2UV\7")
+        buf.write("\25\2\2VW\5\26\f\2WX\7\26\2\2XY\7\13\2\2YZ\7\25\2\2Z[")
+        buf.write("\5\30\r\2[\\\7\26\2\2\\]\7\f\2\2]^\7\25\2\2^_\7\26\2\2")
+        buf.write("_`\5\32\16\2`a\7\r\2\2ab\7\25\2\2bc\7\26\2\2cd\5\36\20")
+        buf.write("\2d\7\3\2\2\2ef\5\4\3\2f\t\3\2\2\2gh\5\4\3\2h\13\3\2\2")
+        buf.write("\2ij\t\3\2\2j\r\3\2\2\2kl\7\27\2\2l\17\3\2\2\2mn\7\27")
+        buf.write("\2\2n\21\3\2\2\2op\7\27\2\2p\23\3\2\2\2qr\t\4\2\2r\25")
+        buf.write("\3\2\2\2st\5\4\3\2t\27\3\2\2\2uv\5\4\3\2v\31\3\2\2\2w")
+        buf.write("y\5\34\17\2xw\3\2\2\2yz\3\2\2\2zx\3\2\2\2z{\3\2\2\2{\33")
+        buf.write("\3\2\2\2|\u0080\7\24\2\2}\177\7\30\2\2~}\3\2\2\2\177\u0082")
+        buf.write("\3\2\2\2\u0080~\3\2\2\2\u0080\u0081\3\2\2\2\u0081\u0083")
+        buf.write("\3\2\2\2\u0082\u0080\3\2\2\2\u0083\u0084\7\31\2\2\u0084")
+        buf.write("\u0085\7\26\2\2\u0085\35\3\2\2\2\u0086\u0088\5 \21\2\u0087")
+        buf.write("\u0086\3\2\2\2\u0088\u0089\3\2\2\2\u0089\u0087\3\2\2\2")
+        buf.write("\u0089\u008a\3\2\2\2\u008a\37\3\2\2\2\u008b\u008f\7\24")
+        buf.write("\2\2\u008c\u008e\7\30\2\2\u008d\u008c\3\2\2\2\u008e\u0091")
+        buf.write("\3\2\2\2\u008f\u008d\3\2\2\2\u008f\u0090\3\2\2\2\u0090")
+        buf.write("\u0092\3\2\2\2\u0091\u008f\3\2\2\2\u0092\u0093\7\31\2")
+        buf.write("\2\u0093\u0094\7\26\2\2\u0094!\3\2\2\2\n&+\63>z\u0080")
+        buf.write("\u0089\u008f")
         return buf.getvalue()
 
 
@@ -64,60 +74,65 @@ class RecipeParser ( Parser ):
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "'RECIPE'", "'REGION'", "'TIME'", "'SERVINGS'", 
-                     "'CALORIES'", "'DIFFICULTY'", "'CATEGORY'", "'TAGS'", 
-                     "'INGREDIENTS'", "'STEPS'", "'Northern'", "'Central'", 
-                     "'Southern'", "'Easy'", "'Medium'", "'Hard'", "'-'" ]
+    literalNames = [ "<INVALID>", "'RECIPE'", "'IMAGE'", "'REGION'", "'TIME'", 
+                     "'SERVINGS'", "'CALORIES'", "'DIFFICULTY'", "'CATEGORY'", 
+                     "'TAGS'", "'INGREDIENTS'", "'STEPS'", "'Northern'", 
+                     "'Central'", "'Southern'", "'Easy'", "'Medium'", "'Hard'", 
+                     "'-'" ]
 
-    symbolicNames = [ "<INVALID>", "RECIPE_KEYWORD", "REGION_KEYWORD", "TIME_KEYWORD", 
-                      "SERVINGS_KEYWORD", "CALORIES_KEYWORD", "DIFFICULTY_KEYWORD", 
-                      "CATEGORY_KEYWORD", "TAGS_KEYWORD", "INGREDIENTS_KEYWORD", 
-                      "STEPS_KEYWORD", "NORTHERN", "CENTRAL", "SOUTHERN", 
-                      "EASY", "MEDIUM", "HARD", "DASH", "SEP", "NEWLINE", 
-                      "NUMBER", "WS", "TEXT" ]
+    symbolicNames = [ "<INVALID>", "RECIPE_KEYWORD", "IMAGE_KEYWORD", "REGION_KEYWORD", 
+                      "TIME_KEYWORD", "SERVINGS_KEYWORD", "CALORIES_KEYWORD", 
+                      "DIFFICULTY_KEYWORD", "CATEGORY_KEYWORD", "TAGS_KEYWORD", 
+                      "INGREDIENTS_KEYWORD", "STEPS_KEYWORD", "NORTHERN", 
+                      "CENTRAL", "SOUTHERN", "EASY", "MEDIUM", "HARD", "DASH", 
+                      "SEP", "NEWLINE", "NUMBER", "WS", "TEXT" ]
 
     RULE_recipes = 0
-    RULE_recipe = 1
-    RULE_recipeName = 2
-    RULE_region = 3
-    RULE_time = 4
-    RULE_servings = 5
-    RULE_calories = 6
-    RULE_difficulty = 7
-    RULE_category = 8
-    RULE_tags = 9
-    RULE_ingredients = 10
-    RULE_ingredient = 11
-    RULE_steps = 12
-    RULE_step = 13
+    RULE_flexibleText = 1
+    RULE_recipe = 2
+    RULE_recipeName = 3
+    RULE_image = 4
+    RULE_region = 5
+    RULE_time = 6
+    RULE_servings = 7
+    RULE_calories = 8
+    RULE_difficulty = 9
+    RULE_category = 10
+    RULE_tags = 11
+    RULE_ingredients = 12
+    RULE_ingredient = 13
+    RULE_steps = 14
+    RULE_step = 15
 
-    ruleNames =  [ "recipes", "recipe", "recipeName", "region", "time", 
-                   "servings", "calories", "difficulty", "category", "tags", 
-                   "ingredients", "ingredient", "steps", "step" ]
+    ruleNames =  [ "recipes", "flexibleText", "recipe", "recipeName", "image", 
+                   "region", "time", "servings", "calories", "difficulty", 
+                   "category", "tags", "ingredients", "ingredient", "steps", 
+                   "step" ]
 
     EOF = Token.EOF
     RECIPE_KEYWORD=1
-    REGION_KEYWORD=2
-    TIME_KEYWORD=3
-    SERVINGS_KEYWORD=4
-    CALORIES_KEYWORD=5
-    DIFFICULTY_KEYWORD=6
-    CATEGORY_KEYWORD=7
-    TAGS_KEYWORD=8
-    INGREDIENTS_KEYWORD=9
-    STEPS_KEYWORD=10
-    NORTHERN=11
-    CENTRAL=12
-    SOUTHERN=13
-    EASY=14
-    MEDIUM=15
-    HARD=16
-    DASH=17
-    SEP=18
-    NEWLINE=19
-    NUMBER=20
-    WS=21
-    TEXT=22
+    IMAGE_KEYWORD=2
+    REGION_KEYWORD=3
+    TIME_KEYWORD=4
+    SERVINGS_KEYWORD=5
+    CALORIES_KEYWORD=6
+    DIFFICULTY_KEYWORD=7
+    CATEGORY_KEYWORD=8
+    TAGS_KEYWORD=9
+    INGREDIENTS_KEYWORD=10
+    STEPS_KEYWORD=11
+    NORTHERN=12
+    CENTRAL=13
+    SOUTHERN=14
+    EASY=15
+    MEDIUM=16
+    HARD=17
+    DASH=18
+    SEP=19
+    NEWLINE=20
+    NUMBER=21
+    WS=22
+    TEXT=23
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -172,28 +187,100 @@ class RecipeParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 37
+            self.state = 41
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==RecipeParser.RECIPE_KEYWORD:
-                self.state = 28
-                self.recipe()
                 self.state = 32
+                self.recipe()
+                self.state = 36
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==RecipeParser.NEWLINE:
-                    self.state = 29
+                    self.state = 33
                     self.match(RecipeParser.NEWLINE)
-                    self.state = 34
+                    self.state = 38
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 39
+                self.state = 43
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 40
+            self.state = 44
             self.match(RecipeParser.EOF)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class FlexibleTextContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def TEXT(self, i:int=None):
+            if i is None:
+                return self.getTokens(RecipeParser.TEXT)
+            else:
+                return self.getToken(RecipeParser.TEXT, i)
+
+        def DASH(self, i:int=None):
+            if i is None:
+                return self.getTokens(RecipeParser.DASH)
+            else:
+                return self.getToken(RecipeParser.DASH, i)
+
+        def NUMBER(self, i:int=None):
+            if i is None:
+                return self.getTokens(RecipeParser.NUMBER)
+            else:
+                return self.getToken(RecipeParser.NUMBER, i)
+
+        def getRuleIndex(self):
+            return RecipeParser.RULE_flexibleText
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFlexibleText" ):
+                listener.enterFlexibleText(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFlexibleText" ):
+                listener.exitFlexibleText(self)
+
+
+
+
+    def flexibleText(self):
+
+        localctx = RecipeParser.FlexibleTextContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 2, self.RULE_flexibleText)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 47 
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while True:
+                self.state = 46
+                _la = self._input.LA(1)
+                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << RecipeParser.DASH) | (1 << RecipeParser.NUMBER) | (1 << RecipeParser.TEXT))) != 0)):
+                    self._errHandler.recoverInline(self)
+                else:
+                    self._errHandler.reportMatch(self)
+                    self.consume()
+                self.state = 49 
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << RecipeParser.DASH) | (1 << RecipeParser.NUMBER) | (1 << RecipeParser.TEXT))) != 0)):
+                    break
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -292,6 +379,13 @@ class RecipeParser ( Parser ):
             return self.getTypedRuleContext(RecipeParser.StepsContext,0)
 
 
+        def IMAGE_KEYWORD(self):
+            return self.getToken(RecipeParser.IMAGE_KEYWORD, 0)
+
+        def image(self):
+            return self.getTypedRuleContext(RecipeParser.ImageContext,0)
+
+
         def getRuleIndex(self):
             return RecipeParser.RULE_recipe
 
@@ -309,88 +403,103 @@ class RecipeParser ( Parser ):
     def recipe(self):
 
         localctx = RecipeParser.RecipeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 2, self.RULE_recipe)
+        self.enterRule(localctx, 4, self.RULE_recipe)
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 42
-            self.match(RecipeParser.RECIPE_KEYWORD)
-            self.state = 43
-            self.match(RecipeParser.SEP)
-            self.state = 44
-            self.recipeName()
-            self.state = 45
-            self.match(RecipeParser.NEWLINE)
-            self.state = 46
-            self.match(RecipeParser.REGION_KEYWORD)
-            self.state = 47
-            self.match(RecipeParser.SEP)
-            self.state = 48
-            self.region()
-            self.state = 49
-            self.match(RecipeParser.NEWLINE)
-            self.state = 50
-            self.match(RecipeParser.TIME_KEYWORD)
             self.state = 51
-            self.match(RecipeParser.SEP)
+            self.match(RecipeParser.RECIPE_KEYWORD)
             self.state = 52
-            self.time()
+            self.match(RecipeParser.SEP)
             self.state = 53
-            self.match(RecipeParser.NEWLINE)
+            self.recipeName()
             self.state = 54
-            self.match(RecipeParser.SERVINGS_KEYWORD)
-            self.state = 55
-            self.match(RecipeParser.SEP)
-            self.state = 56
-            self.servings()
-            self.state = 57
             self.match(RecipeParser.NEWLINE)
-            self.state = 58
-            self.match(RecipeParser.CALORIES_KEYWORD)
-            self.state = 59
-            self.match(RecipeParser.SEP)
             self.state = 60
-            self.calories()
-            self.state = 61
-            self.match(RecipeParser.NEWLINE)
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==RecipeParser.IMAGE_KEYWORD:
+                self.state = 55
+                self.match(RecipeParser.IMAGE_KEYWORD)
+                self.state = 56
+                self.match(RecipeParser.SEP)
+                self.state = 57
+                self.image()
+                self.state = 58
+                self.match(RecipeParser.NEWLINE)
+
+
             self.state = 62
-            self.match(RecipeParser.DIFFICULTY_KEYWORD)
+            self.match(RecipeParser.REGION_KEYWORD)
             self.state = 63
             self.match(RecipeParser.SEP)
             self.state = 64
-            self.difficulty()
+            self.region()
             self.state = 65
             self.match(RecipeParser.NEWLINE)
             self.state = 66
-            self.match(RecipeParser.CATEGORY_KEYWORD)
+            self.match(RecipeParser.TIME_KEYWORD)
             self.state = 67
             self.match(RecipeParser.SEP)
             self.state = 68
-            self.category()
+            self.time()
             self.state = 69
             self.match(RecipeParser.NEWLINE)
             self.state = 70
-            self.match(RecipeParser.TAGS_KEYWORD)
+            self.match(RecipeParser.SERVINGS_KEYWORD)
             self.state = 71
             self.match(RecipeParser.SEP)
             self.state = 72
-            self.tags()
+            self.servings()
             self.state = 73
             self.match(RecipeParser.NEWLINE)
             self.state = 74
-            self.match(RecipeParser.INGREDIENTS_KEYWORD)
+            self.match(RecipeParser.CALORIES_KEYWORD)
             self.state = 75
             self.match(RecipeParser.SEP)
             self.state = 76
-            self.match(RecipeParser.NEWLINE)
+            self.calories()
             self.state = 77
-            self.ingredients()
+            self.match(RecipeParser.NEWLINE)
             self.state = 78
-            self.match(RecipeParser.STEPS_KEYWORD)
+            self.match(RecipeParser.DIFFICULTY_KEYWORD)
             self.state = 79
             self.match(RecipeParser.SEP)
             self.state = 80
-            self.match(RecipeParser.NEWLINE)
+            self.difficulty()
             self.state = 81
+            self.match(RecipeParser.NEWLINE)
+            self.state = 82
+            self.match(RecipeParser.CATEGORY_KEYWORD)
+            self.state = 83
+            self.match(RecipeParser.SEP)
+            self.state = 84
+            self.category()
+            self.state = 85
+            self.match(RecipeParser.NEWLINE)
+            self.state = 86
+            self.match(RecipeParser.TAGS_KEYWORD)
+            self.state = 87
+            self.match(RecipeParser.SEP)
+            self.state = 88
+            self.tags()
+            self.state = 89
+            self.match(RecipeParser.NEWLINE)
+            self.state = 90
+            self.match(RecipeParser.INGREDIENTS_KEYWORD)
+            self.state = 91
+            self.match(RecipeParser.SEP)
+            self.state = 92
+            self.match(RecipeParser.NEWLINE)
+            self.state = 93
+            self.ingredients()
+            self.state = 94
+            self.match(RecipeParser.STEPS_KEYWORD)
+            self.state = 95
+            self.match(RecipeParser.SEP)
+            self.state = 96
+            self.match(RecipeParser.NEWLINE)
+            self.state = 97
             self.steps()
         except RecognitionException as re:
             localctx.exception = re
@@ -408,8 +517,9 @@ class RecipeParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def TEXT(self):
-            return self.getToken(RecipeParser.TEXT, 0)
+        def flexibleText(self):
+            return self.getTypedRuleContext(RecipeParser.FlexibleTextContext,0)
+
 
         def getRuleIndex(self):
             return RecipeParser.RULE_recipeName
@@ -428,11 +538,53 @@ class RecipeParser ( Parser ):
     def recipeName(self):
 
         localctx = RecipeParser.RecipeNameContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 4, self.RULE_recipeName)
+        self.enterRule(localctx, 6, self.RULE_recipeName)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 83
-            self.match(RecipeParser.TEXT)
+            self.state = 99
+            self.flexibleText()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ImageContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def flexibleText(self):
+            return self.getTypedRuleContext(RecipeParser.FlexibleTextContext,0)
+
+
+        def getRuleIndex(self):
+            return RecipeParser.RULE_image
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterImage" ):
+                listener.enterImage(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitImage" ):
+                listener.exitImage(self)
+
+
+
+
+    def image(self):
+
+        localctx = RecipeParser.ImageContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 8, self.RULE_image)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 101
+            self.flexibleText()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -475,11 +627,11 @@ class RecipeParser ( Parser ):
     def region(self):
 
         localctx = RecipeParser.RegionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 6, self.RULE_region)
+        self.enterRule(localctx, 10, self.RULE_region)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 85
+            self.state = 103
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << RecipeParser.NORTHERN) | (1 << RecipeParser.CENTRAL) | (1 << RecipeParser.SOUTHERN))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -522,10 +674,10 @@ class RecipeParser ( Parser ):
     def time(self):
 
         localctx = RecipeParser.TimeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 8, self.RULE_time)
+        self.enterRule(localctx, 12, self.RULE_time)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 87
+            self.state = 105
             self.match(RecipeParser.NUMBER)
         except RecognitionException as re:
             localctx.exception = re
@@ -563,10 +715,10 @@ class RecipeParser ( Parser ):
     def servings(self):
 
         localctx = RecipeParser.ServingsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_servings)
+        self.enterRule(localctx, 14, self.RULE_servings)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 89
+            self.state = 107
             self.match(RecipeParser.NUMBER)
         except RecognitionException as re:
             localctx.exception = re
@@ -604,10 +756,10 @@ class RecipeParser ( Parser ):
     def calories(self):
 
         localctx = RecipeParser.CaloriesContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 12, self.RULE_calories)
+        self.enterRule(localctx, 16, self.RULE_calories)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 91
+            self.state = 109
             self.match(RecipeParser.NUMBER)
         except RecognitionException as re:
             localctx.exception = re
@@ -651,11 +803,11 @@ class RecipeParser ( Parser ):
     def difficulty(self):
 
         localctx = RecipeParser.DifficultyContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 14, self.RULE_difficulty)
+        self.enterRule(localctx, 18, self.RULE_difficulty)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 93
+            self.state = 111
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << RecipeParser.EASY) | (1 << RecipeParser.MEDIUM) | (1 << RecipeParser.HARD))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -678,8 +830,9 @@ class RecipeParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def TEXT(self):
-            return self.getToken(RecipeParser.TEXT, 0)
+        def flexibleText(self):
+            return self.getTypedRuleContext(RecipeParser.FlexibleTextContext,0)
+
 
         def getRuleIndex(self):
             return RecipeParser.RULE_category
@@ -698,11 +851,11 @@ class RecipeParser ( Parser ):
     def category(self):
 
         localctx = RecipeParser.CategoryContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_category)
+        self.enterRule(localctx, 20, self.RULE_category)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 95
-            self.match(RecipeParser.TEXT)
+            self.state = 113
+            self.flexibleText()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -719,8 +872,9 @@ class RecipeParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def TEXT(self):
-            return self.getToken(RecipeParser.TEXT, 0)
+        def flexibleText(self):
+            return self.getTypedRuleContext(RecipeParser.FlexibleTextContext,0)
+
 
         def getRuleIndex(self):
             return RecipeParser.RULE_tags
@@ -739,11 +893,11 @@ class RecipeParser ( Parser ):
     def tags(self):
 
         localctx = RecipeParser.TagsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_tags)
+        self.enterRule(localctx, 22, self.RULE_tags)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 97
-            self.match(RecipeParser.TEXT)
+            self.state = 115
+            self.flexibleText()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -784,17 +938,17 @@ class RecipeParser ( Parser ):
     def ingredients(self):
 
         localctx = RecipeParser.IngredientsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 20, self.RULE_ingredients)
+        self.enterRule(localctx, 24, self.RULE_ingredients)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 100 
+            self.state = 118 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 99
+                self.state = 117
                 self.ingredient()
-                self.state = 102 
+                self.state = 120 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==RecipeParser.DASH):
@@ -848,25 +1002,25 @@ class RecipeParser ( Parser ):
     def ingredient(self):
 
         localctx = RecipeParser.IngredientContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 22, self.RULE_ingredient)
+        self.enterRule(localctx, 26, self.RULE_ingredient)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 104
+            self.state = 122
             self.match(RecipeParser.DASH)
-            self.state = 108
+            self.state = 126
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==RecipeParser.WS:
-                self.state = 105
+                self.state = 123
                 self.match(RecipeParser.WS)
-                self.state = 110
+                self.state = 128
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 111
+            self.state = 129
             self.match(RecipeParser.TEXT)
-            self.state = 112
+            self.state = 130
             self.match(RecipeParser.NEWLINE)
         except RecognitionException as re:
             localctx.exception = re
@@ -908,17 +1062,17 @@ class RecipeParser ( Parser ):
     def steps(self):
 
         localctx = RecipeParser.StepsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_steps)
+        self.enterRule(localctx, 28, self.RULE_steps)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 115 
+            self.state = 133 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 114
+                self.state = 132
                 self.step()
-                self.state = 117 
+                self.state = 135 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==RecipeParser.DASH):
@@ -972,25 +1126,25 @@ class RecipeParser ( Parser ):
     def step(self):
 
         localctx = RecipeParser.StepContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_step)
+        self.enterRule(localctx, 30, self.RULE_step)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 119
+            self.state = 137
             self.match(RecipeParser.DASH)
-            self.state = 123
+            self.state = 141
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==RecipeParser.WS:
-                self.state = 120
+                self.state = 138
                 self.match(RecipeParser.WS)
-                self.state = 125
+                self.state = 143
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 126
+            self.state = 144
             self.match(RecipeParser.TEXT)
-            self.state = 127
+            self.state = 145
             self.match(RecipeParser.NEWLINE)
         except RecognitionException as re:
             localctx.exception = re

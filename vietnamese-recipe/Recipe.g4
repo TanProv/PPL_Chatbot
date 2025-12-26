@@ -7,32 +7,37 @@ recipes
 
 // ==================== PARSER RULES ====================
 
+
+flexibleText : (TEXT | DASH | NUMBER)+ ;
+
 recipe
     : RECIPE_KEYWORD SEP recipeName NEWLINE
+      (IMAGE_KEYWORD SEP image NEWLINE)?      
       REGION_KEYWORD  SEP region NEWLINE
       TIME_KEYWORD    SEP time NEWLINE
       SERVINGS_KEYWORD SEP servings NEWLINE
-      CALORIES_KEYWORD SEP calories NEWLINE   // [MỚI]
+      CALORIES_KEYWORD SEP calories NEWLINE
       DIFFICULTY_KEYWORD SEP difficulty NEWLINE
       CATEGORY_KEYWORD SEP category NEWLINE
-      TAGS_KEYWORD     SEP tags NEWLINE       // [MỚI]
+      TAGS_KEYWORD     SEP tags NEWLINE
       INGREDIENTS_KEYWORD SEP NEWLINE
       ingredients
       STEPS_KEYWORD SEP NEWLINE
       steps
     ;
 
-recipeName : TEXT ;
+recipeName : flexibleText ;                   
+image      : flexibleText ;                   
 region     : NORTHERN | CENTRAL | SOUTHERN ;
 time       : NUMBER ;
 servings   : NUMBER ;
-calories   : NUMBER ;     // [MỚI]
+calories   : NUMBER ;
 difficulty : EASY | MEDIUM | HARD ;
-category   : TEXT ;
-tags       : TEXT ;       // [MỚI]
+category   : flexibleText ;                  
+tags       : flexibleText ;                   
 
 ingredients : ingredient+ ;
-ingredient  : DASH WS* TEXT NEWLINE ;
+ingredient  : DASH WS* TEXT NEWLINE ;         
 
 steps : step+ ;
 step  : DASH WS* TEXT NEWLINE ;
@@ -40,13 +45,14 @@ step  : DASH WS* TEXT NEWLINE ;
 // ==================== LEXER RULES ====================
 
 RECIPE_KEYWORD      : 'RECIPE' ;
+IMAGE_KEYWORD       : 'IMAGE' ;
 REGION_KEYWORD      : 'REGION' ;
 TIME_KEYWORD        : 'TIME' ;
 SERVINGS_KEYWORD    : 'SERVINGS' ;
 CALORIES_KEYWORD    : 'CALORIES' ; 
 DIFFICULTY_KEYWORD  : 'DIFFICULTY' ;
 CATEGORY_KEYWORD    : 'CATEGORY' ;
-TAGS_KEYWORD        : 'TAGS' ;     
+TAGS_KEYWORD        : 'TAGS' ;
 INGREDIENTS_KEYWORD : 'INGREDIENTS' ;
 STEPS_KEYWORD       : 'STEPS' ;
 

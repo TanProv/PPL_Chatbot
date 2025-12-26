@@ -1,4 +1,5 @@
 RECIPE: Goi Cuon (Fresh Spring Rolls)
+IMAGE: goi-cuon.jpg
 REGION: Southern
 TIME: 30
 SERVINGS: 6

@@ -1,4 +1,5 @@
 RECIPE: Cha Gio (Fried Spring Rolls)
+IMAGE: cha-gio.jpg
 REGION: Southern
 TIME: 45
 SERVINGS: 6

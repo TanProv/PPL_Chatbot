@@ -17,6 +17,15 @@ class RecipeListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by RecipeParser#flexibleText.
+    def enterFlexibleText(self, ctx:RecipeParser.FlexibleTextContext):
+        pass
+
+    # Exit a parse tree produced by RecipeParser#flexibleText.
+    def exitFlexibleText(self, ctx:RecipeParser.FlexibleTextContext):
+        pass
+
+
     # Enter a parse tree produced by RecipeParser#recipe.
     def enterRecipe(self, ctx:RecipeParser.RecipeContext):
         pass
@@ -32,6 +41,15 @@ class RecipeListener(ParseTreeListener):
 
     # Exit a parse tree produced by RecipeParser#recipeName.
     def exitRecipeName(self, ctx:RecipeParser.RecipeNameContext):
+        pass
+
+
+    # Enter a parse tree produced by RecipeParser#image.
+    def enterImage(self, ctx:RecipeParser.ImageContext):
+        pass
+
+    # Exit a parse tree produced by RecipeParser#image.
+    def exitImage(self, ctx:RecipeParser.ImageContext):
         pass
 
 

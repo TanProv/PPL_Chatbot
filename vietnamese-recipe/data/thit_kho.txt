@@ -1,4 +1,5 @@
 RECIPE: Thit Kho (Caramelized Pork and Eggs)
+IMAGE: thit-kho.jpg
 REGION: Southern
 TIME: 60
 SERVINGS: 4

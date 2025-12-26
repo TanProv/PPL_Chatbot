@@ -1,4 +1,5 @@
 RECIPE: Pho Bo (Beef Noodle Soup)
+IMAGE: phobo.jpg
 REGION: Northern
 TIME: 180
 SERVINGS: 4

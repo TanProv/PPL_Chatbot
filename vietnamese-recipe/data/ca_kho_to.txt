@@ -1,4 +1,5 @@
 RECIPE: Ca Kho To (Caramelized Fish in Clay Pot)
+IMAGE: ca-kho-to.jpg
 REGION: Southern
 TIME: 45
 SERVINGS: 4
