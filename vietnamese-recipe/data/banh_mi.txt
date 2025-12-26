@@ -1,0 +1,27 @@
+RECIPE: Banh Mi (Vietnamese Sandwich)
+REGION: Southern
+TIME: 30
+SERVINGS: 4
+CALORIES: 400
+DIFFICULTY: Easy
+CATEGORY: Sandwich
+TAGS: street food, pork, bread, quick
+INGREDIENTS:
+- 4 Vietnamese baguettes
+- 300g pork shoulder, sliced
+- 2 tbsp soy sauce
+- 1 tbsp fish sauce
+- 1 tbsp sugar
+- Pickled daikon and carrots
+- Cucumber slices
+- Fresh cilantro
+- Jalapeno slices
+- Mayonnaise
+- Pate (optional)
+STEPS:
+- Marinate pork with soy sauce, fish sauce, and sugar for 15 minutes
+- Grill or panfry pork until cooked through
+- Toast baguettes until crispy
+- Spread mayonnaise and pate inside bread
+- Layer with pork, pickled vegetables, cucumber, cilantro, and jalapeno
+- Serve immediately while bread is crispy

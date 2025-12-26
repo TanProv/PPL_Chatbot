@@ -1,0 +1,28 @@
+RECIPE: Bun Cha (Grilled Pork with Noodles)
+REGION: Northern
+TIME: 45
+SERVINGS: 4
+CALORIES: 550
+DIFFICULTY: Easy
+CATEGORY: Noodle
+TAGS: hanoi style, grilled pork, dipping sauce, lunch
+INGREDIENTS:
+- 500g ground pork
+- 300g pork belly, sliced
+- 3 cloves garlic, minced
+- 2 shallots, minced
+- 2 tbsp fish sauce
+- 1 tbsp sugar
+- Black pepper
+- 400g rice vermicelli
+- Fresh herbs (mint, perilla, lettuce)
+- Pickled papaya or carrot
+- Dipping sauce (fish sauce, sugar, lime, garlic, chili)
+STEPS:
+- Mix ground pork with half the garlic, shallots, fish sauce, sugar, and pepper
+- Form into small patties
+- Marinate pork belly slices with remaining seasonings
+- Grill both patties and belly slices until charred and cooked
+- Cook vermicelli according to package
+- Prepare dipping sauce by mixing all sauce ingredients
+- Serve noodles with grilled pork, herbs, pickles, and dipping sauce

@@ -1,18 +1,19 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory
-from recipe_parser import parse_recipes
-from recipes_data import RECIPES_DSL
+from recipe_parser import load_recipes_from_folder
+from thefuzz import fuzz, process 
 
 app = Flask(__name__)
 
-#how to run first  java -jar antlr-4.9.2-complete.jar -Dlanguage=Python3 Recipe.g4
-#next run python app.py
+# --- CẤU HÌNH ---
+DATA_FOLDER = './data'
+IMAGE_FOLDER = './images'
 
-# Parse all recipes on startup
-print(" Parsing recipes with ANTLR4...")
-recipes = parse_recipes(RECIPES_DSL)
-print(f" Successfully parsed {len(recipes)} recipes!")
+# Load recipes
+print("Loading recipes from data folder...")
+recipes = load_recipes_from_folder(DATA_FOLDER)
+print(f"Successfully loaded {len(recipes)} recipes!")
 
-# Provide image filenames for each recipe name; place files under /images
+# Map ảnh thủ công (hoặc có thể tự động hóa dựa trên tên file)
 IMAGE_MAP = {
     'Pho Bo (Beef Noodle Soup)': 'phobo.jpg',
     'Banh Mi (Vietnamese Sandwich)': 'banh-mi.jpg',
@@ -28,204 +29,123 @@ IMAGE_MAP = {
     'Bo Luc Lac (Shaking Beef)': 'bo-luc-lac.jpg',
 }
 
-# Attach images to parsed recipes
+# Gán ảnh vào recipe
 for r in recipes:
-    r['image'] = IMAGE_MAP.get(r['name'], r.get('image', ''))
+    r['image'] = IMAGE_MAP.get(r['name'], 'default.jpg')
 
-# Chatbot class
 class RecipeChatbot:
     def __init__(self, recipes):
         self.recipes = recipes
     
     def find_recipes(self, user_input):
-        """Find recipes matching user input"""
+        """Tìm kiếm thông minh hơn với Fuzzy Matching"""
         query = user_input.lower().strip()
         matches = []
         
         for recipe in self.recipes:
             score = 0
-            recipe_name = recipe['name'].lower()
+            name = recipe['name'].lower()
             
-            # Exact match
-            if query in recipe_name:
-                score += 100
+            # 1. So sánh tên (Fuzzy Match) - Xử lý lỗi chính tả
+            name_ratio = fuzz.partial_ratio(query, name)
+            if name_ratio > 75: 
+                score += name_ratio * 1.5 # Ưu tiên tên món
             
-            # Word matches
-            words = query.split()
-            for word in words:
-                if len(word) > 2:
-                    if word in recipe_name:
-                        score += 10
-                    # Check ingredients
-                    for ing in recipe['ingredients']:
-                        if word in ing.lower():
-                            score += 5
+            # 2. Tìm trong Tags (MỚI)
+            if 'tags' in recipe and any(tag in query for tag in recipe['tags']):
+                score += 30
+
+            # 3. Tìm trong Nguyên liệu
+            ing_score = 0
+            for ing in recipe['ingredients']:
+                if fuzz.partial_ratio(query, ing.lower()) > 80:
+                    ing_score += 10
+            score += min(ing_score, 50) # Max 50 điểm cho nguyên liệu
+
+            # 4. Tìm theo Category/Region
+            if query in recipe['category'].lower(): score += 20
+            if query in recipe['region'].lower(): score += 20
             
-            # Category/region/difficulty matches
-            if query in recipe['category'].lower():
-                score += 20
-            if query in recipe['region'].lower():
-                score += 20
-            if query in recipe['difficulty'].lower():
-                score += 15
-            
-            if score > 0:
+            if score > 40: # Ngưỡng tối thiểu để coi là match
                 matches.append({'recipe': recipe, 'score': score})
         
-        # Sort by score and return top 5
+        # Sắp xếp theo điểm số cao nhất
         matches.sort(key=lambda x: x['score'], reverse=True)
         return [m['recipe'] for m in matches[:5]]
-    
+
     def generate_response(self, user_input):
-        """Generate chatbot response"""
         query = user_input.lower().strip()
         
-        # Greetings
-        if any(word in query for word in ['hi', 'hello', 'hey', 'chao', 'xin chao']):
-            return {
-                'type': 'greeting',
-                'text': "Xin chào!  I'm your Vietnamese Recipe Assistant powered by ANTLR4!\n\nI can help you find recipes, search by ingredients, filter by difficulty, and more!\n\nTry asking: 'How to make Pho?' or 'What can I make with shrimp?'"
-            }
+        # --- XỬ LÝ INTENT CƠ BẢN ---
         
-        # Help
-        if 'help' in query or 'what can you' in query:
-            return {
-                'type': 'help',
-                'text': " I can help you with:\n\n• Find recipes by name\n• Search by ingredients\n• Filter by difficulty (easy, medium, hard)\n• Filter by region (northern, central, southern)\n• Find quick meals\n\nJust ask me anything!"
-            }
-        
-        # Search by ingredient
-        if any(phrase in query for phrase in ['what can i make with', 'recipes with', 'using']):
-            ingredient = query.replace('what can i make with', '').replace('recipes with', '').replace('using', '').strip()
-            matches = [r for r in self.recipes if any(ingredient in ing.lower() for ing in r['ingredients'])]
-            if matches:
+        # 1. Greeting
+        if any(w in query for w in ['hi', 'hello', 'chao', 'xin chao']):
+            return {'type': 'greeting', 'text': "Xin chào! Tôi là trợ lý nấu ăn thông minh. Bạn muốn tìm món gì hôm nay?"}
+            
+        # 2. Help
+        if 'help' in query:
+            return {'type': 'help', 'text': "Bạn có thể hỏi: 'Cách nấu Phở', 'Món nào dưới 500 calo?', 'Món chay', hoặc tìm bằng nguyên liệu."}
+
+        # 3. [MỚI] Tìm theo Calories (VD: "dưới 500 calo")
+        if 'calo' in query or 'calories' in query:
+            # Logic đơn giản: tìm số trong câu query
+            import re
+            nums = re.findall(r'\d+', query)
+            if nums:
+                limit = int(nums[0])
+                matches = [r for r in self.recipes if r.get('calories', 9999) <= limit]
                 return {
-                    'type': 'multiple',
-                    'text': f"I found {len(matches)} recipe(s) using {ingredient}:",
+                    'type': 'multiple', 
+                    'text': f"Các món dưới {limit} calo:", 
                     'recipes': matches[:5]
                 }
-            else:
-                return {
-                    'type': 'not_found',
-                    'text': f"I couldn't find recipes with '{ingredient}'. Try: shrimp, pork, chicken, beef, or rice."
-                }
-        
-        # Filter by difficulty
-        if any(word in query for word in ['easy', 'medium', 'hard', 'simple', 'quick']):
-            difficulty = 'Easy'
-            if 'medium' in query:
-                difficulty = 'Medium'
-            elif 'hard' in query or 'difficult' in query:
-                difficulty = 'Hard'
-            
-            matches = [r for r in self.recipes if r['difficulty'] == difficulty]
-            return {
-                'type': 'multiple',
-                'text': f"Here are {difficulty} recipes:",
-                'recipes': matches[:5]
-            }
-        
-        # Filter by time
-        if 'quick' in query or 'fast' in query or 'minutes' in query:
-            matches = [r for r in self.recipes if r['time'] <= 30]
-            return {
-                'type': 'multiple',
-                'text': "Quick recipes (30 minutes or less):",
-                'recipes': matches[:5]
-            }
-        
-        # Filter by region
-        if any(region in query for region in ['northern', 'central', 'southern']):
-            region = 'Northern'
-            if 'central' in query:
-                region = 'Central'
-            elif 'southern' in query:
-                region = 'Southern'
-            
-            matches = [r for r in self.recipes if r['region'] == region]
-            return {
-                'type': 'multiple',
-                'text': f"{region} Vietnamese dishes:",
-                'recipes': matches[:5]
-            }
-        
-        # List all
-        if 'show all' in query or 'list' in query:
-            categories = {}
-            for r in self.recipes:
-                cat = r['category']
-                if cat not in categories:
-                    categories[cat] = []
-                categories[cat].append(r['name'])
-            
-            text = " Available Vietnamese Dishes:\n\n"
-            for cat, names in categories.items():
-                text += f"**{cat}:** {', '.join(names[:3])}...\n"
-            
-            return {'type': 'list', 'text': text}
-        
-        # Search for recipes
+
+        # 4. List all
+        if 'all' in query or 'tất cả' in query:
+             return {
+                'type': 'list',
+                'text': "Danh sách các món ăn hiện có:\n" + ", ".join([r['name'] for r in self.recipes])
+             }
+
+        # --- TÌM KIẾM MÓN ĂN ---
         matches = self.find_recipes(user_input)
         
         if not matches:
             return {
                 'type': 'not_found',
-                'text': " I couldn't find that recipe.\n\nTry: 'Pho', 'Banh Mi', 'Spring Rolls', 'Bun Cha', or 'Com Tam'"
+                'text': f"Xin lỗi, tôi không tìm thấy món nào phù hợp với '{user_input}'. Hãy thử từ khóa khác nhé!"
             }
         
         if len(matches) == 1:
-            return {
-                'type': 'recipe',
-                'text': f"Here's the recipe for {matches[0]['name']}:",
-                'recipe': matches[0]
-            }
-        
-        return {
-            'type': 'multiple',
-            'text': f"I found {len(matches)} matching recipes:",
-            'recipes': matches
-        }
+            return {'type': 'recipe', 'text': f"Tìm thấy món {matches[0]['name']}:", 'recipe': matches[0]}
+            
+        return {'type': 'multiple', 'text': f"Tôi tìm thấy {len(matches)} món liên quan:", 'recipes': matches}
 
-# Initialize chatbot
 chatbot = RecipeChatbot(recipes)
+
+# --- FLASK ROUTES ---
 
 @app.route('/')
 def index():
-    """Render main page"""
     return render_template('index.html', recipe_count=len(recipes))
-
 
 @app.route('/chat')
 def chat_page():
-    """Render chat page"""
     return render_template('chat.html', recipe_count=len(recipes))
-
 
 @app.route('/images/<path:filename>')
 def serve_images(filename):
-    """Serve images stored in the local images/ folder"""
-    return send_from_directory('images', filename)
+    return send_from_directory(IMAGE_FOLDER, filename)
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    """Handle chat messages"""
     data = request.json
-    user_message = data.get('message', '')
-    
-    response = chatbot.generate_response(user_message)
+    response = chatbot.generate_response(data.get('message', ''))
     return jsonify(response)
 
 @app.route('/api/recipes', methods=['GET'])
 def get_recipes():
-    """Get all recipes"""
     return jsonify(recipes)
 
 if __name__ == '__main__':
-    print("\n" + "="*50)
-    print(" Vietnamese Recipe Chatbot")
-    print("="*50)
-    print(f" Loaded {len(recipes)} recipes")
-    print(" Starting server...")
-    print(" Open http://127.0.0.1:5000 in your browser")
-    print("="*50 + "\n")
     app.run(debug=True, host='0.0.0.0', port=5000)

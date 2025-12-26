@@ -1,6 +1,6 @@
 grammar Recipe;
 
-// Root rule for multiple recipes
+// Root rule
 recipes
     : (recipe (NEWLINE)*)* EOF
     ;
@@ -12,8 +12,10 @@ recipe
       REGION_KEYWORD  SEP region NEWLINE
       TIME_KEYWORD    SEP time NEWLINE
       SERVINGS_KEYWORD SEP servings NEWLINE
+      CALORIES_KEYWORD SEP calories NEWLINE   // [MỚI]
       DIFFICULTY_KEYWORD SEP difficulty NEWLINE
       CATEGORY_KEYWORD SEP category NEWLINE
+      TAGS_KEYWORD     SEP tags NEWLINE       // [MỚI]
       INGREDIENTS_KEYWORD SEP NEWLINE
       ingredients
       STEPS_KEYWORD SEP NEWLINE
@@ -24,8 +26,10 @@ recipeName : TEXT ;
 region     : NORTHERN | CENTRAL | SOUTHERN ;
 time       : NUMBER ;
 servings   : NUMBER ;
+calories   : NUMBER ;     // [MỚI]
 difficulty : EASY | MEDIUM | HARD ;
 category   : TEXT ;
+tags       : TEXT ;       // [MỚI]
 
 ingredients : ingredient+ ;
 ingredient  : DASH WS* TEXT NEWLINE ;
@@ -39,8 +43,10 @@ RECIPE_KEYWORD      : 'RECIPE' ;
 REGION_KEYWORD      : 'REGION' ;
 TIME_KEYWORD        : 'TIME' ;
 SERVINGS_KEYWORD    : 'SERVINGS' ;
+CALORIES_KEYWORD    : 'CALORIES' ; 
 DIFFICULTY_KEYWORD  : 'DIFFICULTY' ;
 CATEGORY_KEYWORD    : 'CATEGORY' ;
+TAGS_KEYWORD        : 'TAGS' ;     
 INGREDIENTS_KEYWORD : 'INGREDIENTS' ;
 STEPS_KEYWORD       : 'STEPS' ;
 
@@ -52,14 +58,9 @@ EASY   : 'Easy' ;
 MEDIUM : 'Medium' ;
 HARD   : 'Hard' ;
 
-/*
-  SEP eats ':' plus any following horizontal space
-  including NBSP (\u00A0) and BOM (\uFEFF)
-*/
 DASH    : '-' ;
 SEP     : ':' [ \t\u00A0\uFEFF]* ;
 NEWLINE : '\r'? '\n' | '\r' ;
 NUMBER  : [0-9]+ ;
 WS      : [ \t\u00A0\uFEFF]+ -> skip ;
-TEXT : ~[\r\n:-]+ ;
-
+TEXT    : ~[\r\n:-]+ ;

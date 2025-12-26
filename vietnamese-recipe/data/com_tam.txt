@@ -1,0 +1,28 @@
+RECIPE: Com Tam (Broken Rice with Grilled Pork)
+REGION: Southern
+TIME: 60
+SERVINGS: 4
+CALORIES: 600
+DIFFICULTY: Medium
+CATEGORY: Rice
+TAGS: saigon style, breakfast, grilled pork, savory
+INGREDIENTS:
+- 2 cups broken rice
+- 500g pork chops
+- 3 tbsp fish sauce
+- 2 tbsp sugar
+- 2 cloves garlic, minced
+- 1 shallot, minced
+- Black pepper
+- Fried eggs
+- Pickled vegetables
+- Cucumber and tomato slices
+- Scallion oil
+- Fish sauce dipping
+STEPS:
+- Marinate pork with fish sauce, sugar, garlic, shallot, and pepper for 1 hour
+- Cook broken rice with slightly more water than regular rice
+- Grill pork chops until charred and cooked through
+- Fry eggs sunny side up
+- Serve rice with grilled pork, fried egg, pickled vegetables, cucumber, tomato
+- Drizzle with scallion oil and serve with fish sauce

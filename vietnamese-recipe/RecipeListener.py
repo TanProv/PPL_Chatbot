@@ -62,6 +62,15 @@ class RecipeListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by RecipeParser#calories.
+    def enterCalories(self, ctx:RecipeParser.CaloriesContext):
+        pass
+
+    # Exit a parse tree produced by RecipeParser#calories.
+    def exitCalories(self, ctx:RecipeParser.CaloriesContext):
+        pass
+
+
     # Enter a parse tree produced by RecipeParser#difficulty.
     def enterDifficulty(self, ctx:RecipeParser.DifficultyContext):
         pass
@@ -77,6 +86,15 @@ class RecipeListener(ParseTreeListener):
 
     # Exit a parse tree produced by RecipeParser#category.
     def exitCategory(self, ctx:RecipeParser.CategoryContext):
+        pass
+
+
+    # Enter a parse tree produced by RecipeParser#tags.
+    def enterTags(self, ctx:RecipeParser.TagsContext):
+        pass
+
+    # Exit a parse tree produced by RecipeParser#tags.
+    def exitTags(self, ctx:RecipeParser.TagsContext):
         pass
 
 

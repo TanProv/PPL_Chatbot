@@ -1,0 +1,28 @@
+RECIPE: Canh Chua (Sour Soup)
+REGION: Southern
+TIME: 30
+SERVINGS: 4
+CALORIES: 150
+DIFFICULTY: Easy
+CATEGORY: Soup
+TAGS: sour, fish soup, tamarind, healthy
+INGREDIENTS:
+- 400g fish, cut into pieces
+- 2 tomatoes, quartered
+- 100g pineapple, cubed
+- 100g okra, sliced
+- 50g bean sprouts
+- Tamarind paste
+- Fish sauce
+- Sugar
+- Fresh herbs
+- Chili
+STEPS:
+- Make tamarind water with paste
+- Bring to boil with tomatoes
+- Season with fish sauce and sugar
+- Add pineapple and okra
+- Add fish pieces, cook until done
+- Add bean sprouts
+- Garnish with herbs and chili
+- Serve with steamed rice

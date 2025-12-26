@@ -1,0 +1,30 @@
+RECIPE: Banh Xeo (Crispy Vietnamese Crepes)
+REGION: Southern
+TIME: 40
+SERVINGS: 4
+CALORIES: 450
+DIFFICULTY: Medium
+CATEGORY: Main
+TAGS: pancake, crispy, coconut milk, wrap
+INGREDIENTS:
+- 1 cup rice flour
+- 1/2 cup coconut milk
+- 1 cup water
+- 1/4 tsp turmeric
+- 200g pork belly, sliced
+- 200g shrimp, peeled
+- Bean sprouts
+- Onion, sliced
+- Scallions
+- Lettuce, herbs
+- Fish sauce dip
+STEPS:
+- Mix rice flour, coconut milk, water, and turmeric into thin batter
+- Rest batter 30 minutes
+- Heat oil in non-stick pan
+- Saute pork and shrimp briefly
+- Pour thin layer of batter, swirl to coat
+- Add pork, shrimp, bean sprouts, onion on half
+- Cover and cook until crispy and golden
+- Fold in half
+- Serve with lettuce, herbs, and fish sauce

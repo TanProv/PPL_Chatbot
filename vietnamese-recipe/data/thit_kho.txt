@@ -1,0 +1,29 @@
+RECIPE: Thit Kho (Caramelized Pork and Eggs)
+REGION: Southern
+TIME: 60
+SERVINGS: 4
+CALORIES: 500
+DIFFICULTY: Easy
+CATEGORY: Main
+TAGS: tet holiday, pork belly, eggs, comfort food
+INGREDIENTS:
+- 600g pork belly, cubed
+- 4 hard-boiled eggs, peeled
+- 3 tbsp sugar
+- 3 tbsp fish sauce
+- 2 shallots, minced
+- 2 cloves garlic, minced
+- Black pepper
+- Coconut water
+- Scallions
+STEPS:
+- Caramelize sugar in pot until dark
+- Add fish sauce carefully
+- Add shallots and garlic, saute briefly
+- Add pork, coat with caramel
+- Add coconut water to cover
+- Add eggs and pepper
+- Simmer covered 45 minutes until tender
+- Reduce sauce until thick
+- Garnish with scallions
+- Serve with steamed rice

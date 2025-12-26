@@ -1,0 +1,32 @@
+RECIPE: Pho Bo (Beef Noodle Soup)
+REGION: Northern
+TIME: 180
+SERVINGS: 4
+CALORIES: 450
+DIFFICULTY: Medium
+CATEGORY: Soup
+TAGS: noodle, beef, traditional, breakfast
+INGREDIENTS:
+- 2 lbs beef bones
+- 1 lb beef brisket
+- 1 onion, charred
+- 3 inch ginger, charred
+- 2 cinnamon sticks
+- 3 star anise
+- 4 cloves
+- 1 tbsp coriander seeds
+- 400g rice noodles
+- Fresh herbs (basil, cilantro, mint)
+- Bean sprouts
+- Lime wedges
+- Hoisin sauce, sriracha
+STEPS:
+- Blanch bones and beef in boiling water for 5 minutes, then rinse
+- Char onion and ginger over flame until fragrant
+- Toast spices in dry pan until aromatic
+- Simmer bones, beef, charred aromatics, and spices in 4L water for 3 hours
+- Remove beef after 1 hour, slice thinly
+- Strain broth, season with fish sauce and sugar
+- Cook rice noodles according to package
+- Assemble noodles, beef slices, hot broth
+- Serve with fresh herbs, bean sprouts, lime, and sauces

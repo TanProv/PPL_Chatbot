@@ -1,0 +1,27 @@
+RECIPE: Cha Gio (Fried Spring Rolls)
+REGION: Southern
+TIME: 45
+SERVINGS: 6
+CALORIES: 250
+DIFFICULTY: Medium
+CATEGORY: Appetizer
+TAGS: crispy, fried, party food, pork
+INGREDIENTS:
+- 20 rice paper wrappers
+- 300g ground pork
+- 100g shrimp, minced
+- 50g wood ear mushrooms, chopped
+- 50g glass noodles, soaked and chopped
+- 1 carrot, shredded
+- 1 onion, minced
+- 2 cloves garlic, minced
+- Fish sauce, sugar, pepper
+- Oil for frying
+STEPS:
+- Mix all filling ingredients with seasonings
+- Soften rice paper briefly in water
+- Place 2 tbsp filling on wrapper, fold sides and roll tightly
+- Heat oil to 350F
+- Fry rolls in batches until golden brown, about 5 minutes
+- Drain on paper towels
+- Serve with lettuce, herbs, and fish sauce dip
