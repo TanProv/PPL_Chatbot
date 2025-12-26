@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +7,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #f97316; /* Orange 500 */
+            --primary: #f97316;
             --primary-dark: #c2410c;
             --bg-light: #f3f4f6;
             --bg-dark: #1f2937;
-            --card-light: #ffffff;
-            --card-dark: #374151;
             --text-light: #1f2937;
             --text-dark: #f3f4f6;
+            --card-bg-light: #fff7ed;
+            --card-bg-dark: #431407;
         }
 
         body {
@@ -33,7 +33,7 @@
             color: var(--text-dark);
         }
 
-        /* Header */
+        /* HEADER */
         .header {
             background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
             padding: 15px 20px;
@@ -44,21 +44,14 @@
             align-items: center;
             z-index: 10;
         }
-
         .header-title { font-size: 1.4rem; font-weight: bold; display: flex; align-items: center; gap: 10px; }
-        
         .theme-toggle {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.2s;
+            background: rgba(255,255,255,0.2); border: none; color: white;
+            padding: 8px 12px; border-radius: 20px; cursor: pointer; transition: 0.2s;
         }
         .theme-toggle:hover { background: rgba(255,255,255,0.3); }
 
-        /* Chat Area */
+        /* CHAT AREA */
         .chat-container {
             flex: 1;
             overflow-y: auto;
@@ -66,64 +59,35 @@
             scroll-behavior: smooth;
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
-
-        .message {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
-            animation: fadeIn 0.3s ease;
-        }
-        
+        .message { display: flex; gap: 12px; margin-bottom: 20px; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
         .message.user { flex-direction: row-reverse; }
         
         .avatar {
             width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 1.2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .bot .avatar { background: white; border: 2px solid #ef4444; }
         .user .avatar { background: #3b82f6; color: white; }
 
         .bubble {
-            max-width: 85%;
-            padding: 14px 18px;
-            border-radius: 18px;
-            line-height: 1.5;
-            position: relative;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-width: 85%; padding: 14px 18px; border-radius: 18px; line-height: 1.5;
+            position: relative; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        
-        .bot .bubble {
-            background: white;
-            color: #374151;
-            border-top-left-radius: 4px;
-        }
-        body.dark-mode .bot .bubble { background: var(--card-dark); color: #e5e7eb; }
-        
-        .user .bubble {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
-            border-top-right-radius: 4px;
-        }
+        .bot .bubble { background: white; color: #374151; border-top-left-radius: 4px; }
+        body.dark-mode .bot .bubble { background: var(--card-bg-dark); color: #e5e7eb; }
+        .user .bubble { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border-top-right-radius: 4px; }
 
-        /* Recipe Card */
+        /* RECIPE CARD */
         .recipe-card {
-            background: #fff7ed;
-            border: 1px solid #fed7aa;
-            border-radius: 16px;
-            overflow: hidden;
-            margin-top: 10px;
+            background: var(--card-bg-light); border: 1px solid #fed7aa;
+            border-radius: 16px; overflow: hidden; margin-top: 10px;
             box-shadow: 0 4px 15px rgba(249, 115, 22, 0.1);
         }
-        body.dark-mode .recipe-card { background: #431407; border-color: #7c2d12; }
-
+        body.dark-mode .recipe-card { background: var(--card-bg-dark); border-color: #7c2d12; }
         .recipe-img { width: 100%; height: 200px; object-fit: cover; }
-        
         .recipe-body { padding: 20px; }
-        
         .recipe-title {
             font-size: 1.5rem; color: #9a3412; font-weight: 800; margin-bottom: 10px;
             display: flex; justify-content: space-between; align-items: center;
@@ -131,121 +95,214 @@
         body.dark-mode .recipe-title { color: #fdba74; }
 
         .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px; }
-        .tag {
-            font-size: 0.8rem; padding: 4px 10px; border-radius: 12px; font-weight: 600;
-        }
+        .tag { font-size: 0.8rem; padding: 4px 10px; border-radius: 12px; font-weight: 600; }
         .tag.time { background: #dbeafe; color: #1e40af; }
         .tag.level { background: #d1fae5; color: #065f46; }
         .tag.cal { background: #fee2e2; color: #991b1b; }
 
-        /* Checklist Style */
+        /* TOOLS & CHECKLIST */
         .checklist li {
             list-style: none; padding: 8px 0; border-bottom: 1px dashed rgba(0,0,0,0.1);
             display: flex; align-items: center; gap: 10px;
         }
-        .checklist input[type="checkbox"] { transform: scale(1.2); cursor: pointer; accent-color: #f97316; }
-        .checklist label { cursor: pointer; transition: 0.2s; }
         .checklist input:checked + label { text-decoration: line-through; opacity: 0.6; }
-
-        /* Tools Bar */
-        .tools {
-            display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 10px;
-        }
+        
+        .tools { display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 10px; }
         .tool-btn {
             background: none; border: none; cursor: pointer; color: #666; font-size: 0.9rem;
             display: flex; align-items: center; gap: 5px; padding: 5px 10px; border-radius: 8px;
         }
         .tool-btn:hover { background: rgba(0,0,0,0.05); color: var(--primary); }
+        .tool-btn.active { color: #ef4444; font-weight: bold; }
         body.dark-mode .tool-btn { color: #aaa; }
-        body.dark-mode .tool-btn:hover { color: #fdba74; }
 
-        /* Input Area */
-        .input-area {
-            background: white;
-            padding: 15px;
-            box-shadow: 0 -2px 20px rgba(0,0,0,0.05);
-        }
-        body.dark-mode .input-area { background: var(--card-dark); }
-
+        /* INPUT AREA */
+        .input-area { background: white; padding: 15px; box-shadow: 0 -2px 20px rgba(0,0,0,0.05); }
+        body.dark-mode .input-area { background: var(--bg-dark); }
+        
         .input-box {
             display: flex; gap: 10px; max-width: 1000px; margin: 0 auto;
-            background: var(--bg-light); padding: 5px; border-radius: 30px; border: 2px solid transparent;
-            transition: border-color 0.3s;
+            background: var(--bg-light); padding: 5px; border-radius: 30px;
+            border: 2px solid transparent;
         }
-        body.dark-mode .input-box { background: #1f2937; }
+        body.dark-mode .input-box { background: #374151; }
         .input-box:focus-within { border-color: var(--primary); }
-
-        input {
+        
+        input[type="text"] {
             flex: 1; border: none; background: transparent; padding: 12px 20px;
             outline: none; font-size: 1rem; color: var(--text-light);
         }
-        body.dark-mode input { color: white; }
-
+        body.dark-mode input[type="text"] { color: white; }
+        
         .send-btn {
             background: var(--primary); color: white; border: none;
             width: 45px; height: 45px; border-radius: 50%; cursor: pointer;
-            transition: transform 0.2s; display: flex; align-items: center; justify-content: center;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.2s;
         }
         .send-btn:hover { transform: scale(1.1); background: var(--primary-dark); }
 
-        .suggestions {
-            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; max-width: 1000px; margin: 0 auto;
-        }
+        .suggestions { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; max-width: 1000px; margin: 0 auto; }
         .chip {
             white-space: nowrap; background: rgba(249, 115, 22, 0.1); color: var(--primary-dark);
-            padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; cursor: pointer; border: 1px solid rgba(249, 115, 22, 0.2);
-            transition: 0.2s;
+            padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; cursor: pointer;
+            border: 1px solid rgba(249, 115, 22, 0.2);
         }
-        body.dark-mode .chip { background: rgba(249, 115, 22, 0.2); color: #fdba74; }
         .chip:hover { background: var(--primary); color: white; }
 
+        /* MODAL STYLES */
+        .btn-add-float {
+            position: fixed; bottom: 100px; right: 20px;
+            width: 60px; height: 60px; border-radius: 50%;
+            background: var(--primary); color: white; border: none;
+            font-size: 1.5rem; box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+            cursor: pointer; z-index: 90; display: flex; align-items: center; justify-content: center;
+            transition: 0.3s;
+        }
+        .btn-add-float:hover { transform: scale(1.1); }
+
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5); overflow: auto;
+        }
+        .modal-content {
+            background-color: #fff; margin: 5% auto; padding: 25px; border-radius: 15px;
+            width: 90%; max-width: 600px; position: relative; animation: slideIn 0.3s;
+        }
+        @keyframes slideIn { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        
+        .modal h2 { color: var(--primary); margin-top: 0; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #4b5563; }
+        .form-control {
+            width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;
+            box-sizing: border-box; font-family: inherit;
+        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .btn-submit {
+            background: var(--primary); color: white; border: none; padding: 12px 20px;
+            border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px;
+        }
+        .close-modal {
+            position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #999;
+        }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <div class="header-title">
-            <i class="fas fa-utensils"></i> Vietnamese Kitchen AI
-        </div>
+        <div class="header-title"><i class="fas fa-utensils"></i> Vietnamese Kitchen AI</div>
         <div>
             <a href="/" style="color:white; text-decoration:none; margin-right: 15px; font-weight:600">Home</a>
             <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
         </div>
     </div>
 
+    <button class="btn-add-float" onclick="openModal()" title="Add new recipe">
+        <i class="fas fa-plus"></i>
+    </button>
+
     <div class="chat-container" id="messages">
         <div class="message bot">
             <div class="avatar"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" width="25"></div>
-            <div class="bubble">
-                Xin chào! Tôi là trợ lý nấu ăn AI 🤖.<br>
-                Tôi có thể giúp gì cho bạn?
-            </div>
+            <div class="bubble">Hello! I'm the AI ​​cooking assistant. 🤖.<br>May I help you?</div>
         </div>
     </div>
 
     <div class="input-area">
         <div class="suggestions">
-            <div class="chip" onclick="ask('Gợi ý món ăn tối nay')">🎲 Gợi ý ngẫu nhiên</div>
-            <div class="chip" onclick="ask('pho bo')">🍜 Cách nấu Phở Bò</div>
-            <div class="chip" onclick="ask('Món gì dưới 400 calo?')">🥗 Món low-carb</div>
+            <div class="chip" onclick="ask('random')">🎲 Random</div>
+            <div class="chip" onclick="ask('pho bo')">🍜 Phở Bò</div>
+            <div class="chip" onclick="ask('What food is under 400 calories?')">🥗 Low-carb</div>
+            <div class="chip" onclick="showFavorites()">❤️ Favourite</div>
         </div>
         <div style="height: 10px;"></div>
         <div class="input-box">
-            <input type="text" id="userInput" placeholder="Nhập tên món hoặc nguyên liệu..." onkeypress="handleEnter(event)">
+            <input type="text" id="userInput" placeholder="Enter the name of the dish or ingredient...." onkeypress="handleEnter(event)">
             <button class="send-btn" onclick="sendMsg()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <div id="recipeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2><i class="fas fa-book-medical"></i> Add new recipe</h2>
+            <form id="addRecipeForm" enctype="multipart/form-data">
+                
+                <div class="form-group">
+                    <label>Image of the dish</label>
+                    <label style="border: 2px dashed #ccc; padding: 15px; border-radius: 8px; cursor: pointer; display: block; text-align: center; color: #666;">
+                        <i class="fas fa-cloud-upload-alt"></i> Choose an image to upload.
+                        <input type="file" name="image_file" accept="image/*" style="display: none;" onchange="previewImage(this)">
+                    </label>
+                    <img id="img-preview" src="" style="width: 100%; height: 180px; object-fit: cover; margin-top: 10px; border-radius: 8px; display: none;">
+                </div>
+
+                <div class="form-group">
+                    <label>Name of dish</label>
+                    <input type="text" name="name" class="form-control" required placeholder="Ví dụ: Bún Riêu Cua">
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Region</label>
+                        <select name="region" class="form-control">
+                            <option value="Northern">Northern</option>
+                            <option value="Central">Central</option>
+                            <option value="Southern">Southern</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Difficulty</label>
+                        <select name="difficulty" class="form-control">
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Time (minutes)</label>
+                        <input type="number" name="time" class="form-control" value="30">
+                    </div>
+                    <div class="form-group">
+                        <label>Calo (kcal)</label>
+                        <input type="number" name="calories" class="form-control" value="500">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Ingredients (One item per line)</label>
+                    <textarea name="ingredients" class="form-control" rows="4" placeholder="- 500g cua đồng&#10;- 2 quả cà chua..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Instructions (One step per line)</label>
+                    <textarea name="steps" class="form-control" rows="4" placeholder="- Giã cua lọc lấy nước&#10;- Phi thơm hành..." required></textarea>
+                </div>
+
+                <input type="hidden" name="servings" value="4">
+                <input type="hidden" name="category" value="General">
+                <input type="hidden" name="tags" value="new, homemade">
+
+                <button type="submit" class="btn-submit">Save recipe</button>
+            </form>
         </div>
     </div>
 
     <script>
         const chat = document.getElementById('messages');
-        let isSpeaking = false;
 
+        // --- THEME ---
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
             const btn = document.querySelector('.theme-toggle i');
             btn.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
         }
 
+        // --- CHAT FUNCTIONS ---
         function scrollToBottom() { chat.scrollTop = chat.scrollHeight; }
 
         function ask(text) {
@@ -260,11 +317,8 @@
             const text = input.value.trim();
             if(!text) return;
 
-            // Add User Message
             addMessage(text, 'user');
             input.value = '';
-            
-            // Loading
             const loadingId = addLoading();
 
             try {
@@ -274,7 +328,6 @@
                     body: JSON.stringify({message: text})
                 });
                 const data = await res.json();
-                
                 removeLoading(loadingId);
                 
                 let content = data.text;
@@ -282,25 +335,19 @@
                 if(data.recipes) content += renderList(data.recipes);
                 
                 addMessage(content, 'bot', true);
-
             } catch (err) {
                 removeLoading(loadingId);
-                addMessage("Xin lỗi, tôi đang gặp sự cố kết nối.", 'bot');
+                addMessage("Server connection error.", 'bot');
             }
         }
 
         function addMessage(html, sender, isHTML = false) {
             const div = document.createElement('div');
             div.className = `message ${sender}`;
-            
-            const avatarHTML = sender === 'bot' 
+            const avatar = sender === 'bot' 
                 ? '<div class="avatar"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" width="25"></div>'
                 : '<div class="avatar"><i class="fas fa-user"></i></div>';
-
-            div.innerHTML = `
-                ${avatarHTML}
-                <div class="bubble">${isHTML ? html : escapeHtml(html)}</div>
-            `;
+            div.innerHTML = `${avatar}<div class="bubble">${isHTML ? html : escapeHtml(html)}</div>`;
             chat.appendChild(div);
             scrollToBottom();
         }
@@ -310,67 +357,80 @@
             const div = document.createElement('div');
             div.id = id;
             div.className = 'message bot';
-            div.innerHTML = `
-                <div class="avatar"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" width="25"></div>
-                <div class="bubble" style="color:#888"><i class="fas fa-ellipsis-h fa-beat"></i></div>
-            `;
+            div.innerHTML = `<div class="avatar"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" width="25"></div><div class="bubble" style="color:#888"><i class="fas fa-ellipsis-h fa-beat"></i></div>`;
             chat.appendChild(div);
             scrollToBottom();
             return id;
         }
 
-        function removeLoading(id) {
-            const el = document.getElementById(id);
-            if(el) el.remove();
+        function removeLoading(id) { const el = document.getElementById(id); if(el) el.remove(); }
+        function escapeHtml(text) { const div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
+
+        // --- FAVORITES LOGIC (LocalStorage) ---
+        function getFavorites() { return JSON.parse(localStorage.getItem('favRecipes')) || []; }
+
+        function toggleFavorite(recipeName) {
+            let favs = getFavorites();
+            const index = favs.indexOf(recipeName);
+            const btnId = `fav-btn-${recipeName.replace(/\s/g, '')}`;
+            const btn = document.getElementById(btnId);
+
+            if (index > -1) {
+                favs.splice(index, 1);
+                if(btn) {
+                    btn.innerHTML = '<i class="far fa-heart"></i> Yêu thích';
+                    btn.classList.remove('active');
+                }
+            } else {
+                favs.push(recipeName);
+                if(btn) {
+                    btn.innerHTML = '<i class="fas fa-heart"></i> Đã thích';
+                    btn.classList.add('active');
+                }
+            }
+            localStorage.setItem('favRecipes', JSON.stringify(favs));
         }
 
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
+        function showFavorites() {
+            const favs = getFavorites();
+            if (favs.length === 0) {
+                addMessage("You haven't saved any recipes yet.", 'bot');
+            } else {
+                addMessage(`❤️ Favorite list (${favs.length} recipes):<br><b>${favs.join(', ')}</b><br><i>(Type the name of a recipe to see details)</i>`, 'bot', true);
+            }
         }
 
-        // --- RENDER RECIPE WITH FEATURES ---
+        // --- RENDER FUNCTIONS ---
         function renderRecipe(r) {
-            const img = r.image ? `/images/${r.image}` : '';
-            const stepsText = r.steps.join('. '); // For TTS
-            
+            const img = r.image && r.image !== 'default.jpg' ? `/images/${r.image}` : 'https://placehold.co/600x300?text=Delicious+Food';
+            const isFav = getFavorites().includes(r.name);
+            const heartIcon = isFav ? '<i class="fas fa-heart"></i> Đã thích' : '<i class="far fa-heart"></i> Yêu thích';
+            const activeClass = isFav ? 'active' : '';
+            const btnId = `fav-btn-${r.name.replace(/\s/g, '')}`;
+
             return `
                 <div class="recipe-card">
-                    <img src="${img}" class="recipe-img" onerror="this.src='https://placehold.co/600x200?text=Delicious'">
+                    <img src="${img}" class="recipe-img">
                     <div class="recipe-body">
                         <div class="recipe-title">
                             ${r.name}
-                            <button class="tool-btn" onclick="speakText('${r.name}. ${stepsText}')" title="Đọc công thức">
-                                <i class="fas fa-volume-up"></i>
-                            </button>
+                            <button class="tool-btn" onclick="speakText('${r.name}')"><i class="fas fa-volume-up"></i></button>
                         </div>
-                        
                         <div class="tags">
                             <span class="tag time"><i class="far fa-clock"></i> ${r.time} mins</span>
                             <span class="tag level"><i class="fas fa-signal"></i> ${r.difficulty}</span>
                             <span class="tag cal"><i class="fas fa-fire"></i> ${r.calories || 'N/A'} kcal</span>
                             <span class="tag" style="background:#eee">📍 ${r.region}</span>
                         </div>
-
-                        <h4><i class="fas fa-carrot" style="color:var(--primary)"></i> Nguyên liệu:</h4>
+                        <h4><i class="fas fa-carrot" style="color:var(--primary)"></i> Ingredients:</h4>
                         <ul class="checklist">
-                            ${r.ingredients.map((ing, i) => `
-                                <li>
-                                    <input type="checkbox" id="ing-${r.name}-${i}">
-                                    <label for="ing-${r.name}-${i}">${ing}</label>
-                                </li>
-                            `).join('')}
+                            ${r.ingredients.map((ing, i) => `<li><input type="checkbox" id="ing-${i}"><label for="ing-${i}">${ing}</label></li>`).join('')}
                         </ul>
-
                         <h4><i class="fas fa-fire-burner" style="color:var(--primary)"></i> Các bước:</h4>
-                        <ol style="padding-left: 20px; line-height: 1.6">
-                            ${r.steps.map(s => `<li>${s}</li>`).join('')}
-                        </ol>
-
+                        <ol style="padding-left: 20px; line-height: 1.6">${r.steps.map(s => `<li>${s}</li>`).join('')}</ol>
                         <div class="tools">
-                            <button class="tool-btn" onclick="alert('Đã lưu vào yêu thích! (Demo)')"><i class="far fa-heart"></i> Yêu thích</button>
-                            <button class="tool-btn" onclick="alert('Đã chia sẻ!')"><i class="fas fa-share-alt"></i> Chia sẻ</button>
+                            <button id="${btnId}" class="tool-btn ${activeClass}" onclick="toggleFavorite('${r.name}')">${heartIcon}</button>
+                            <button class="tool-btn"><i class="fas fa-share-alt"></i> Chia sẻ</button>
                         </div>
                     </div>
                 </div>
@@ -378,36 +438,80 @@
         }
 
         function renderList(list) {
-            return `
-                <div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
-                    ${list.map(r => `
-                        <div class="recipe-card" style="display:flex; cursor:pointer;" onclick="ask('Cách làm ${r.name}')">
-                            <img src="/images/${r.image}" style="width:80px; height:80px; object-fit:cover;">
-                            <div style="padding:10px;">
-                                <div style="font-weight:bold">${r.name}</div>
-                                <div style="font-size:0.8rem; color:#666">${r.time} mins • ${r.difficulty}</div>
-                            </div>
+            return `<div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
+                ${list.map(r => `
+                    <div class="recipe-card" style="display:flex; cursor:pointer; align-items:center" onclick="ask('Making ${r.name}')">
+                         <div style="padding:15px; flex:1">
+                            <div style="font-weight:bold; color:var(--primary-dark)">${r.name}</div>
+                            <div style="font-size:0.8rem; color:#666">⏱️ ${r.time}p • 🔥 ${r.calories} kcal</div>
                         </div>
-                    `).join('')}
-                </div>
-            `;
+                    </div>
+                `).join('')}
+            </div>`;
         }
 
-        // --- TEXT TO SPEECH ---
+        // --- TTS ---
         function speakText(text) {
             if ('speechSynthesis' in window) {
-                if (window.speechSynthesis.speaking) {
-                    window.speechSynthesis.cancel();
-                    return;
-                }
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'vi-VN'; // Set Vietnamese
-                utterance.rate = 0.9;
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("Trình duyệt của bạn không hỗ trợ đọc văn bản.");
+                window.speechSynthesis.cancel();
+                const u = new SpeechSynthesisUtterance(text);
+                u.lang = 'vi-VN'; u.rate = 0.9;
+                window.speechSynthesis.speak(u);
             }
         }
+
+        // --- ADD RECIPE LOGIC ---
+        function openModal() { document.getElementById('recipeModal').style.display = 'block'; }
+        function closeModal() { document.getElementById('recipeModal').style.display = 'none'; }
+        
+        window.onclick = function(e) { if (e.target == document.getElementById('recipeModal')) closeModal(); }
+
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('img-preview');
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        document.getElementById('addRecipeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            
+            const btn = document.querySelector('.btn-submit');
+            const originalText = btn.innerText;
+            btn.innerText = "Đang lưu...";
+            btn.disabled = true;
+
+            fetch('/api/add_recipe', {
+                method: 'POST',
+                body: formData // Gửi FormData (tự động xử lý multipart/form-data)
+            })
+            .then(res => res.json())
+            .then(result => {
+                btn.innerText = originalText;
+                btn.disabled = false;
+                if(result.status === 'success') {
+                    alert('✅ New recipe added.!');
+                    closeModal();
+                    e.target.reset();
+                    document.getElementById('img-preview').style.display = 'none';
+                    ask(`Making ${formData.get('name')}`);
+                } else {
+                    alert('❌ Error: ' + result.message);
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Connection error!');
+                btn.innerText = originalText;
+                btn.disabled = false;
+            });
+        });
     </script>
 </body>
 </html>
